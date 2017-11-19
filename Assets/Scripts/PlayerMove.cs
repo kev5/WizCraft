@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour {
             GameObject spell = Instantiate((GameObject)spell_1, mainCamera.transform.position + new Vector3(7 * (float) Math.Sin(player.gameObject.transform.rotation.eulerAngles.y * Math.PI / 180), 0, 7 * (float)Math.Cos(player.gameObject.transform.rotation.eulerAngles.y * Math.PI / 180)), transform.rotation) as GameObject;
             spell.gameObject.GetComponent<BoulderSpell>().x_direction = (float) Math.Sin(player.gameObject.transform.rotation.eulerAngles.y * Math.PI / 180);
             spell.gameObject.GetComponent<BoulderSpell>().z_direction = (float) Math.Cos(player.gameObject.transform.rotation.eulerAngles.y * Math.PI / 180);
-            endTime = DateTime.Now.TimeOfDay.TotalSeconds + 2;
+            endTime = DateTime.Now.TimeOfDay.TotalSeconds + 0.5f;
             ExtendUnlockAndNotifyUserAction(thalmicMyo);
         }
 
