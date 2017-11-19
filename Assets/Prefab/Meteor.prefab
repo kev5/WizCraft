@@ -319,6 +319,7 @@ MonoBehaviour:
   x_direction: 0
   y_direction: 0
   z_direction: 0
+  damage: 25
 --- !u!135 &135657197039195248
 SphereCollider:
   m_ObjectHideFlags: 1

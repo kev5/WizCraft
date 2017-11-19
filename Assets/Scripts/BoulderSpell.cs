@@ -14,6 +14,6 @@ public class BoulderSpell : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(new Vector3(x_direction, 0, z_direction) * Time.deltaTime * 25);
+        transform.position += new Vector3(x_direction, 0, z_direction) * Time.deltaTime * 25;
     }
 }

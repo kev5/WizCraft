@@ -10,7 +10,7 @@ namespace DigitalRuby.PyroParticles
     {
         private Texture2D logo;
 
-        public override void OnInspectorGUI()
+        public void OnInspectorGUI()
         {
             if (logo == null)
             {

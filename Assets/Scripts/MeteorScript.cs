@@ -9,7 +9,9 @@ public class MeteorScript : MonoBehaviour {
     public float y_direction;
     public float z_direction;
 
-    public GameObject player;
+    public int damage;
+
+    private GameObject player;
 
     // Use this for initialization
     void Start () {
@@ -22,9 +24,9 @@ public class MeteorScript : MonoBehaviour {
 
         if(transform.position.x + 6 >= player.transform.position.x && transform.position.x - 6 <= player.transform.position.x &&
             transform.position.y + 6 >= player.transform.position.y && transform.position.y - 6 <= player.transform.position.y &&
-            transform.position.z + 6 >= player.transform.position.z && transform.position.z - 6 <= player.transform.position.z) { 
-            Destroy(player);
-            SceneManager.LoadScene("LoseScreen");
+            transform.position.z + 6 >= player.transform.position.z && transform.position.z - 6 <= player.transform.position.z) {
+            player.gameObject.GetComponent<Health>().health -= damage;
+            Destroy(gameObject);
         }
 
         if (transform.position.y + 6 <= 0)  {

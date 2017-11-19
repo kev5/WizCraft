@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Score : MonoBehaviour {
+public class Health : MonoBehaviour {
 
-    public int score;
-    public int toWin;
+    public int health;
 
 	// Use this for initialization
 	void Start () {
-        score = 0;
-    }
+		
+	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(score >= toWin) {
-            SceneManager.LoadScene("WinScreen");
+		if(health <= 0){
+            Destroy(gameObject);
+            SceneManager.LoadScene("LoseScreen");
         }
 	}
 }

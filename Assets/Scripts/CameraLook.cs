@@ -1,16 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+using System.Collections;
 using LockingPolicy = Thalmic.Myo.LockingPolicy;
 using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
 using VibrationType = Thalmic.Myo.VibrationType;
 
-public class Walk : MonoBehaviour {
+public class CameraLook : MonoBehaviour
+{
+   
 
+    [Header ("Myo")]
     public GameObject myoGameObject;
 
+    [Header ("Camera Look Settings")]
+    public GameObject playerObj;
+    public GameObject cam;
     public float deadZoneBorder = 15;
     public float sensitivity = 1;
     public float maxCameraXAngle = 0;
@@ -22,45 +26,35 @@ public class Walk : MonoBehaviour {
     private float deadZoneXCenter = 0;
     private float deadZoneYCenter = 0;
 
-    private bool isCalibrated;
+    private bool isMouseLookEnabled = true;
+    private bool isCalibrated = false;
 
-    private ThalmicMyo myo;
-    
-    private GameObject mainCamera;
+    Vector3 newCamRot = Vector3.zero;
 
-    private Vector3 newCamRot = Vector3.zero;
+    ThalmicMyo myo;
 
-    // Use this for initialization
-    void Start () {
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        myo = myoGameObject.GetComponent<ThalmicMyo>();
-        isCalibrated = false;
+    void Start()
+    {
+        myo = myoGameObject.GetComponent<ThalmicMyo> ();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (isCalibrated)
+
+    void Update()
+    {
+        if(isMouseLookEnabled)
         {
-            UpdateCamera();
-            SetNewCameraRot();
+            if(isCalibrated)
+            {
+                UpdateCamera ();
+                SetNewCameraRot ();
+            }
         }
 
-
-        if (myo.pose == Pose.DoubleTap) {
-            Calibrate();
+        if(myo.pose == Pose.DoubleTap)
+        {
+            Calibrate ();
 
             isCalibrated = true;
         }
-
-        if (Input.GetKey("right"))
-            transform.Rotate(0.0f, 2f * Time.deltaTime * 50, 0.0f);
-        else if (Input.GetKey("left"))
-            transform.Rotate(0.0f, -2.0f * Time.deltaTime * 50, 0.0f);
-
-        if (Input.GetKey("up"))
-            transform.Translate(Vector3.forward * Time.deltaTime * 8);
-        else if (Input.GetKey("down"))
-            transform.Translate(Vector3.forward * Time.deltaTime * 8 * -1.0f);
     }
 
     void UpdateCamera()
@@ -74,7 +68,7 @@ public class Walk : MonoBehaviour {
         float xLowerDeadZone = deadZoneXCenter + deadZoneBorder;
 
         //Convert angle to minus (for example, rather than 350 you have -10 degrees)
-        if (myoXRot <= 360 && myoXRot >= 270)
+        if(myoXRot <= 360 && myoXRot >= 270)
         {
             myoXRot -= 360;
         }
@@ -83,6 +77,50 @@ public class Walk : MonoBehaviour {
         {
             myoYRot -= 360;
         }
+
+        if (myoXRot <= xUpperDeadZone)
+        {
+            //The farther the arm moves from dead zone the faster the camera moves with it
+            float speed = myoXRot - xUpperDeadZone;
+            speed = 1 * (speed / 4);
+
+            speed *= -1;
+
+            if (speed < 1)
+            {
+                speed = 1;
+            }
+            else if (speed >= 5)
+            {
+                speed = 5;
+            }
+            //Debug.Log (speed);
+
+            newCamRot.x = newCamRot.x - (Time.deltaTime * sensitivity * speed);
+
+            //Debug.Log ("Over Upper X Limit");
+        }
+        else if(myoXRot >= xLowerDeadZone)
+        {
+            //The farther the arm moves from dead zone the faster the camera moves with it
+            float speed = myoXRot - xLowerDeadZone;
+            speed = 1 * (speed / 4);
+
+            if (speed < 1)
+            {
+                speed = 1;
+            }
+            else if (speed >= 5)
+            {
+                speed = 5;
+            }
+            //Debug.Log (speed);
+
+            newCamRot.x = newCamRot.x + (Time.deltaTime * sensitivity * speed);
+
+            //Debug.Log ("Over Lower X Limit");
+        }
+        //END OF X AXIS UPDATE ------------
 
         //Set y deadzone boundaries
         float yUpperDeadZone = deadZoneYCenter + deadZoneBorder;
@@ -139,14 +177,14 @@ public class Walk : MonoBehaviour {
         tempRot.z = 0;
 
         //Rotate player body on the y axis instead of the camera
-        transform.localEulerAngles = tempRot;
+        playerObj.transform.localEulerAngles = tempRot;
 
         tempRot = newCamRot;
         tempRot.y = 0;
 
-        newCamRot.x = Mathf.Clamp(newCamRot.x, -minCameraXAngle, maxCameraXAngle);
+        newCamRot.x = Mathf.Clamp (newCamRot.x, -minCameraXAngle, maxCameraXAngle);
 
-        mainCamera.transform.localEulerAngles = tempRot;
+        cam.transform.localEulerAngles = tempRot;
     }
 
     void Calibrate()
@@ -159,9 +197,10 @@ public class Walk : MonoBehaviour {
         deadZoneXCenter = myoXAtCalibration;
         deadZoneYCenter = myoYAtCalibration;
 
-        if (deadZoneXCenter > 270 && deadZoneXCenter <= 360)
+        if(deadZoneXCenter > 270 && deadZoneXCenter <= 360)
         {
             deadZoneXCenter -= 360;
         }
     }
+	
 }
