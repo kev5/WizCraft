@@ -4,7 +4,7 @@ Project submitted and demoed at [HackWITus2](https://devpost.com/software/wizcra
 
 ## Inspiration
 
-Our main inspiration behind this project was to integrate the Myo armband with Unity and learn more about the AI. We made a 3D competitive game using Unity and Myo armband.
+Our main inspiration behind this project was to integrate the Myo armband with Unity and learn more about the artificially intelligent bots we could compete with. We successfully made a 3D competitive game using Unity and Myo armband.
 
 ## What it does
 
@@ -16,7 +16,7 @@ This was built using the Unity Game Engine in which the scripts were written in 
 
 ## Challenges We ran into
 
-Programming the AI bot was the main challenge we ran into.
+Programming the AI bot was the main challenge we ran into. Also, configuring the different spells to make them work properly was harder than imagined,
 
 ## Accomplishments that We're proud of
 
@@ -24,11 +24,12 @@ Making an interesting gesture controlled game.
 
 ## What We learned
 
-Programming the AI to compete against users, successfully integrating the game with Myo armband.
+Programming the AI to compete against users, successfully integrating the game with Myo armband. Coming up with creative spells and implementing them in our game.
 
 ## What's next for WizCraft
 
-More interactive UI and allow multiple players to compete against each other through a centralized server.
+In the future we want multiple players to compete against each other through a centralized server. We can also add power-ups, special powers, cool-down time between consecutive attacks, and an attractive UI to make it more appealing. In conclusion, we can add a whole lot of stuff to our game and make it bigger and better.
+
 
 ## Built With
 
