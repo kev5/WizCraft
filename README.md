@@ -35,4 +35,13 @@ In the future we want multiple players to compete against each other through a c
 
 Unity, Myo Armband, C#
 
+## Some Screenshots of our Game in action
+
+- Bot
 ![Bot](Images/Bot.png)
+
+- Spell 1: Boulders
+![](Images/Boulders.png)
+
+- Spell 2: Lightning
+![](Images/Lightning.png)
