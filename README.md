@@ -34,3 +34,5 @@ In the future we want multiple players to compete against each other through a c
 ## Built With
 
 Unity, Myo Armband, C#
+
+![Bot](Images/Bot.png)
