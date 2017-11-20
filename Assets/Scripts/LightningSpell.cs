@@ -10,7 +10,7 @@ public class LightningSpell : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        endTime = DateTime.Now.TimeOfDay.TotalSeconds + 1;
+        endTime = DateTime.Now.TimeOfDay.TotalSeconds + 0.1;
     }
 
     // Update is called once per frame

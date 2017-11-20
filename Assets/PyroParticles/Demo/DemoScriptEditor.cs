@@ -1,7 +1,7 @@
 ﻿using System;
 
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace DigitalRuby.PyroParticles
 {
@@ -10,7 +10,7 @@ namespace DigitalRuby.PyroParticles
     {
         private Texture2D logo;
 
-        public override void OnInspectorGUI()
+        public void OnInspectorGUI()
         {
             if (logo == null)
             {

@@ -8,6 +8,8 @@ TagManager:
   - Boulder
   - Meteor
   - Ground
+  - Fire
+  - Lightning
   layers:
   - Default
   - TransparentFX
