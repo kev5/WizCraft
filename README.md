@@ -20,7 +20,7 @@ Programming the AI bot was the main challenge we ran into. Also, configuring the
 
 ## Accomplishments that We're proud of
 
-Making an interesting gesture controlled game.
+Making an interesting gesture controlled game from scratch in less than 12 hours. We were completely new to the Unity game engine as well as the Myo armband, but by the end of the Hackathon, we successfully implemented our idea and learned a lot in the process.
 
 ## What We learned
 
