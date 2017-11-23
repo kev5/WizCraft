@@ -4,7 +4,7 @@ Project submitted and demoed at [HackWITus2](https://devpost.com/software/wizcra
 
 ## Inspiration
 
-Our main inspiration behind this project was to integrate the Myo armband with Unity and learn more about the artificially intelligent bots we could compete with. We successfully made a 3D competitive game using Unity and Myo armband.
+Our main inspiration behind this project was to integrate the Myo armband with Unity and learn more about the artificially intelligent bots we could compete with. We successfully created a 3-D gesture controlled competitive game using Unity and Myo armband.
 
 ## What it does
 
