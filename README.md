@@ -8,7 +8,7 @@ Our main inspiration behind this project was to integrate the Myo armband with U
 
 ## What it does
 
-Compete against the bot using different gestures to cast spells and attack! The Myo armband is used to move and attack the AI bots using different hand gestures. AI bots are programmed to constantly search for the opponent and attack using the A* pathfinding algorithm.
+Compete against the bot using different gestures to cast spells and attack! The Myo armband is used to move and attack the AI bots using different hand gestures. AI bots are programmed to constantly search for the player to attack using Predictive Modeling and Pathfinding Algorithms.
 
 ## How We built it
 
